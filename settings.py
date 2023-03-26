@@ -1,16 +1,18 @@
 level1 = [
-    '                                                        ',
-    '                                                        ',
-    '                                                        ',
-    ' XX                   XX                                ',
-    ' XXP                                                    ',
-    ' XXXX         XX         XX                             ',
-    ' XXXX        XX                                         ',
-    ' XX    XXXXXXX  XXXX   XX                               ',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-    'XXXXXXXX  XXXX    XX  XXXX  XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-    'XXXXXXXX  XXXXXX  XX  XXXX  XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    '                                                                                                                                                                                  ',
+    'X                                                                                                                                                                                 ',
+    'X                                                                                                                                                                                 ',
+    'X                                                                                                                                                                                 ',
+    'X                                                                AAA        AAAAAAA                                                                                               ',
+    'X                AAA                         AAXXXX    XXAXXXXXXXXXA        AXXXXXA                                                                                               ',
+    'X            XXXXXXA                        XXXXXXXAAAAX           XXX      AAAAAAA   A      A                                                                                    ',
+    'X    P       XXXXXXA               AAA     XXXXXXXXXXXXX              AAAA            XA     XA                                                                                   ',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXAAAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                  ',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                                                                          ',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
+
+
 
 
 tile_size: int = 64

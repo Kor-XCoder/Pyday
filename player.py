@@ -1,10 +1,11 @@
 import pygame
+from settings import *
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
         self.image = pygame.image.load('images/park.png')
-        self.image = pygame.transform.scale(self.image, (64, 64))
+        self.image = pygame.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect(topleft=pos)
         self.power = pygame.math.Vector2(0, 0)
         self.maxSpeed: int = 8
@@ -16,6 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.jumpPower: int = 16
         self.isDebugVisible: bool = False
         self.DebugPressed = -1000
+        self.isSpiking: bool = False
 
 
     def input(self):
@@ -31,7 +33,7 @@ class Player(pygame.sprite.Sprite):
                 if self.power.x > -self.maxSpeed:
                     self.power.x -= 1
                     lr = True
-        if keys[pygame.K_UP] or keys[pygame.K_w]:
+        if keys[pygame.K_UP] or keys[pygame.K_w] or keys[pygame.K_SPACE]:
             if not self.isJumping:
                 self.power.y = -self.jumpPower
                 self.isJumping = True

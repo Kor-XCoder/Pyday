@@ -1,11 +1,13 @@
 import pygame
 from tiles import Tile
+from spikes import Spike
 from settings import *
 from player import Player
 
 class Level:
     def __init__(self, lv_data, surface):
         # Level Setup
+        self.spikes = None
         self.tiles = None
         self.player = None
         self.display_surface = surface
@@ -16,6 +18,7 @@ class Level:
 
     def setup(self, layout):
         self.tiles = pygame.sprite.Group()
+        self.spikes = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
 
         for y, row in enumerate(layout):
@@ -23,6 +26,9 @@ class Level:
                 if cell == 'X':
                     tile = Tile((x * tile_size, y * tile_size), tile_size)
                     self.tiles.add(tile)
+                elif cell == 'A':
+                    spike = Spike((x * tile_size, y * tile_size), 17, 13)
+                    self.spikes.add(spike)
                 elif cell == 'P':
                     self.Maracle = Player((x * tile_size, y * tile_size))
                     self.player.add(self.Maracle)
@@ -50,6 +56,9 @@ class Level:
         self.tiles.update(-self.world_shift)
         self.tiles.draw(self.display_surface)
 
+        self.spikes.update(-self.world_shift)
+        self.spikes.draw(self.display_surface)
+
         self.player.update()
         self.check_horizontal()
         self.check_vertical()
@@ -67,22 +76,46 @@ class Level:
                     player.rect.left = sprite.rect.right
                 elif player.power.x > 0:
                     player.rect.right = sprite.rect.left
-        player.rect.x = max(player.rect.x, 0) # prevent player from going offscreen to the left
-        player.rect.x = min(player.rect.x, screen_width - player.rect.width) # prevent player from going offscreen to the right
+
+        for spike in self.spikes.sprites():
+            if spike.rect.colliderect(player.rect):
+                player.power.x = -spike.knockback.x
+                player.power.y = -spike.knockback.y
+                player.isJumping = True
+                player.canMove = False
+                player.isSpiking = True
+
+        player.rect.x = max(player.rect.x, 0)
+        player.rect.x = min(player.rect.x, screen_width - player.rect.width)
 
     def check_vertical(self):
         player = self.player.sprite
-        player.apply_gravity() # updating y position and apply gravity
+        player.apply_gravity()
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.power.y > 0:
                     player.rect.bottom = sprite.rect.top
                     player.power.y = 0
-                    player.isJumping = False
+                    if player.isSpiking:
+                        if abs(player.power.x) <= 1.5:
+                            player.isJumping = False
+                            player.canMove = True
+                            player.isSpiking = False
+                    else:
+                        player.isJumping = False
+                        player.canMove = True
                 elif player.power.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.power.y = 0
+
+        for spike in self.spikes.sprites():
+            if spike.rect.colliderect(player.rect):
+                player.power.x = -spike.knockback.x
+                player.power.y = -spike.knockback.y
+                player.isJumping = True
+                player.canMove = False
+                player.isSpiking = True
         if player.isJumping or player.power.y > 0:
             player.power.y = min(player.power.y, 20)
 
