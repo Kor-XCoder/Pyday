@@ -1,11 +1,10 @@
 import pygame
 from settings import *
 
-class Spike(pygame.sprite.Sprite):
-    def __init__(self, pos, kx, ky, ty):
-        self.knockback = pygame.math.Vector2(kx, ky)
+class Exit(pygame.sprite.Sprite):
+    def __init__(self, pos):
         super().__init__()
-        self.image = pygame.image.load('images/' + ty + '.png')
+        self.image = pygame.image.load('images/exit.png')
         self.image = pygame.transform.scale(self.image, (tile_size, tile_size))
         self.rect = self.image.get_rect(topleft=pos)
 

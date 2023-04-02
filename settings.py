@@ -1,20 +1,39 @@
+import pygame
+
+pygame.init()
+# level1 = [
+#     '1                                                                                                                                                                                 ',
+#     '2                                                                                                                                                                                E',
+#     '2                                                                                                                                                                             1111',
+#     '2                                                                                                                                                                       A 11112222',
+#     '2                                                                           AAAAAAA                                             1                                   A 111122222222',
+#     '2                                              1111    11A111111111         B11111B                      1                     12                              A  1111222222222222',
+#     '2            111111                         1112222AAAA222222222222111      BBBBBBB                  11112                   1122                             11112222222222222222',
+#     '2    P       222222                        122222222222222222222222222AAAA            1      1     1122222     AA       A  112222             A   AA   A  111122222222222222222222',
+#     '21111111111112222221111111AAA11111111111111222222222222222222222222222111111111111111121111112111112222222111111111    111122222211      11111111111111111222222222222222222222222',
+#     '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222AAAA222222222222CCCCCC22222222222222222222222222222222222222222',
+#     '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222111122222222222211111222222222222222222222222222222222222222222'
+# ]
+
 level1 = [
-    '                                                                                                                                                                                  ',
-    'X                                                                                                                                                                                 ',
-    'X                                                                                                                                                                                 ',
-    'X                                                                                                                                                                                 ',
-    'X                                                                AAA        AAAAAAA                                                                                               ',
-    'X                AAA                         AAXXXX    XXAXXXXXXXXXA        AXXXXXA                                                                                               ',
-    'X            XXXXXXA                        XXXXXXXAAAAX           XXX      AAAAAAA   A      A                                                                                    ',
-    'X    P       XXXXXXA               AAA     XXXXXXXXXXXXX              AAAA            XA     XA                                                                                   ',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXAAAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                  ',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                                                                          ',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    '1                                                                                                                                                                                 ',
+    '2                                                                                                                                                                                 ',
+    '2                                                                                                                                                                             1111',
+    '2                                                                                                                                                                       A 11112222',
+    '2                                                                AAA        AAAAAAA                      A                      1                                   A 111122222222',
+    '2                AAA                         AA1111    11A111111111B        B11111B                     A1                     12                              A  1111222222222222',
+    '2            111111B                        1112222AAAA222222222222111      BBBBBBB   A      A       11112                   1122                             11112222222222222222',
+    '2    P      E222222B               AAA     122222222222222222222222222AAAA            1A     1A    1122222    AAA       A  112222             A   AA   A  111122222222222222222222',
+    '21111111111112222221111111AAA11111111111111222222222222222222222222222111111111111111121111112111112222222111111111    111122211111      11111111111111112222222222222222222222222',
+    '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222AAAA222222222222CCCCCC22222222222222222222222222222222222222222',
+    '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222111122222222222222222222222222222222222222222222222222222222222'
 ]
 
 
 
-
 tile_size: int = 64
-screen_width: int = 1200
+screen_width: int = pygame.display.Info().current_w
 screen_height: int = len(level1) * tile_size
+screen_real_height: int = pygame.display.Info().current_h
+
+print(str(screen_width) + 'x' + str(screen_real_height))

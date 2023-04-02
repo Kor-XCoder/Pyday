@@ -14,7 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.inertia: float = 0.2
         self.instantSpeed: int = 1
         self.gravity: float = 0.8
-        self.jumpPower: int = 16
+        self.jumpPower: float = 16.3
         self.isDebugVisible: bool = False
         self.DebugPressed = -1000
         self.isSpiking: bool = False
@@ -23,6 +23,18 @@ class Player(pygame.sprite.Sprite):
     def input(self):
         keys = pygame.key.get_pressed()
         lr = False
+
+        # Breaking Code
+        # if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and (keys[pygame.K_LEFT] or keys[pygame.K_a]):
+        #     if self.canMove:
+        #         if abs(self.power.x) < 1:
+        #             self.power.x = 0
+        #         if self.power.x < -1:
+        #             self.power.x += self.instantSpeed
+        #         elif self.power.x > 1:
+        #             self.power.x -= self.instantSpeed
+        #         lr = True
+
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             if self.canMove:
                 if self.power.x < self.maxSpeed:
